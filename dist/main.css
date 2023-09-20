@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap");
 
+@font-face {
+    font-family: 'pocket_calculatorregular';
+    src: url('./font/pockc___-webfont.woff2') format('woff2'),
+    url('./font/pockc___-webfont.woff') format('woff'),
+    url('./font/POCKC___.TTF') format('truetype');
+
+    font-style: normal;
+}
 body {
     background-color: #000000;
     /*
@@ -9,22 +17,21 @@ body {
     font-weight: 700;
 }
 
-#hello-wrapper {
-    color: #fff;
-    font-family: 'Source Sans Pro', sans-serif;
-}
+/*#hello-wrapper {*/
+/*    color: #fff;*/
+/*    font-family: 'Source Sans Pro', sans-serif;*/
+/*}*/
 
 .typewriter {
     border-right: solid 5px transparent;
     white-space: nowrap;
     overflow: hidden;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'pocket_calculatorregular', 'Source Sans Pro', sans-serif;
     font-size: 50px;
-    animation:
-            animated-text 1.2s steps(17, end) 1s 1 normal both
+    /*animation: animated-text 1.2s steps(17, end) 1s 1 normal both*/
 }
 
-/* text animation */
+/* text animation
 @keyframes animated-text {
     from {
         width: 0;
@@ -33,7 +40,19 @@ body {
         width: 100%;
     }
 }
-
+*/
 #particles-js {
     height: 100vh;
+}
+.header-title{
+    font-family: 'pocket_calculatorregular', 'Source Sans Pro', sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    height: 10%;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    /*background-color: white;*/
+    color:red;
+    text-shadow: 1px 1px 2px grey, 0 0 25px red, 0 0 1px white;
 }
