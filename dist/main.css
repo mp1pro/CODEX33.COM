@@ -46,7 +46,7 @@ body {
 }
 .header-title{
     font-family: 'pocket_calculatorregular', 'Source Sans Pro', sans-serif;
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 400;
     height: 10%;
     display: inline-block;
@@ -55,14 +55,16 @@ body {
     /*background-color: white;*/
     color:red;
     text-shadow: 1px 1px 25px gray, 0 0 25px red, 0 0 2px white;
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
 }
-.glow-on-hover {
-    width: 220px;
-    height: 50px;
+#buttons{
+    padding-top: 1rem;
+}
+.landing-button {
+    width: 22rem;
+    height: 3rem;
     border: none;
     outline: none;
-
     background: rgba(0, 0, 0, 0.1);
     /*opacity: 0.5;*/
     cursor: pointer;
