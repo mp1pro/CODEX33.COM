@@ -54,5 +54,83 @@ body {
     width: 100%;
     /*background-color: white;*/
     color:red;
-    text-shadow: 1px 1px 2px grey, 0 0 25px red, 0 0 1px white;
+    text-shadow: 1px 1px 25px gray, 0 0 25px red, 0 0 2px white;
+    padding-bottom: 3rem;
+}
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+
+    background: rgba(0, 0, 0, 0.1);
+    /*opacity: 0.5;*/
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    display: block;
+    margin: 20px auto;
+}
+
+/*.glow-on-hover:before {
+    content: '';
+    !*background: linear-gradient(45deg, #FFFFF0, #F0F8FF, #FFFFFF, #dcdcdc, #a0a0a0, #404040, #EE4B2B, #800020, #ff0000);*!
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}*/
+
+
+.bevel {
+    border-left: 1px dashed grey;
+    border-top: 1px dashed grey;
+    padding: 4px;
+    box-shadow: 4px 4px 8px grey;
+    color: #fff;
+    transition: 0.3s;
+}
+.bevel:hover {
+    box-shadow: -4px -4px 8px red;
+    border: 0;
+    color: #f00;
 }
