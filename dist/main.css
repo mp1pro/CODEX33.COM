@@ -133,7 +133,11 @@ body {
     transition: 0.3s;
 }
 .bevel:hover {
-    box-shadow: -4px -4px 8px red;
+    box-shadow: -4px -4px 8px grey;
     border: 0;
     color: #f00;
+}
+.links{
+    color: #ffffff;
+    text-decoration: none;
 }
