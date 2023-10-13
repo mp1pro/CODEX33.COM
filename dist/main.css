@@ -83,11 +83,10 @@ body {
     background-image: url("./images/menu_pattern_1.png");
 }
 .accordion-item {
-    color: white;
     background-color: black;
 }
 .accordion-button {
-    color: white;
+    color: #ddd;
     background-color: #333333;
     font-size: 1.3rem;
 }
@@ -95,7 +94,7 @@ body {
     background-color: black;
 }
 .accordion-button:not(.collapsed){
-    color: white;
+    color: #999;
     background-color: black;
 }
 .accordion-button:focus {
@@ -116,4 +115,18 @@ body {
     background-color: black;
     border-color: gray;
     color: red;
+}
+.accordion-body ul li{
+    text-align: left;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 2;
+    color: #999;
+    /*Verdana, Arial, Helvetica, sans-serif*/
+}
+.blockquote {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: #999;
 }
