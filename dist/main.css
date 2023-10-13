@@ -118,11 +118,11 @@ body {
 }
 .accordion-body ul li{
     text-align: left;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    /*font-family: Verdana, Arial, Helvetica, sans-serif;*/
     font-weight: 400;
     font-size: 1.1rem;
     line-height: 2;
-    color: #999;
+    color: #ccc;
     /*Verdana, Arial, Helvetica, sans-serif*/
 }
 .blockquote {
