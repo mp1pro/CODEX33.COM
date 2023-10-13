@@ -89,6 +89,7 @@ body {
 .accordion-button {
     color: white;
     background-color: #333333;
+    font-size: 1.3rem;
 }
 .accordion-button:hover {
     background-color: black;
