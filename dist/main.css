@@ -94,7 +94,7 @@ body {
     background-color: black;
 }
 .accordion-button:not(.collapsed){
-    color: #999;
+    color: #ccc;
     background-color: black;
 }
 .accordion-button:focus {
