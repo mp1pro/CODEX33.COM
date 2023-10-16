@@ -130,3 +130,7 @@ body {
     font-size: 1.25rem;
     color: #999;
 }
+h2.left{
+    text-align: left;
+    color: #999;
+}
