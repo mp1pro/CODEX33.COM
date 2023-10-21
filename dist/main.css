@@ -103,10 +103,14 @@ body {
 .container-fluid.r-pad{
     padding-right: 0;
 }
-.nav-link{
-    color: white;
+.btn{
+    transition: unset;
+}
+.nav-link:focus {
+    color: unset;
 }
 .btn-primary {
+    color: white;
     /*background-color: #333333;*/
     border: 1px dashed gray;
     background: rgba(0, 0, 0, 0.01);
@@ -114,6 +118,10 @@ body {
 .btn-primary:hover {
     background-color: black;
     border-color: gray;
+    color: red;
+}
+.btn-primary:focus{
+    background-color: black;
     color: red;
 }
 .accordion-body ul li{
@@ -133,4 +141,40 @@ body {
 h2.left{
     text-align: left;
     color: #999;
+}
+.footer-title{
+    font-family: 'pocket_calculatorregular', 'Source Sans Pro', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    height: 5%;
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    /*background-color: white;*/
+    color:red;
+    text-shadow: 1px 1px 25px gray, 0 0 25px red, 0 0 2px white;
+}
+footer{
+    font-size: 0.75rem;
+    /*font-weight: 400;*/
+}
+.icons{
+    width: 100%;
+    height: 1.5rem;
+}
+ul.grey-color{
+    background-color: #ccc;
+}
+.px-right-none{
+    padding-right: 0 !important;
+}
+.nav-link.footer{
+    color: #999;
+}
+.nav-link.footer:hover {
+    color: red;
+}
+.icons:hover{
+    width: 130%;
+    height: 1.5rem;
 }
