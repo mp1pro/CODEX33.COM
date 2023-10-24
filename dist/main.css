@@ -16,7 +16,7 @@ body {
     text-align: center;
     font-weight: 700;
 }
-#faq, #terms{
+#faq, #terms, #privacy{
     background-image: url("./images/menu_pattern_1.png");
 }
 
@@ -183,7 +183,7 @@ ul.grey-color{
     height: 1.5rem;
 }
 /*TERMS*/
-body#terms{
+body#terms, body#privacy{
     text-align: left;
     color: #666;
 }
