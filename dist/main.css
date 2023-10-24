@@ -16,9 +16,6 @@ body {
     text-align: center;
     font-weight: 700;
 }
-#faq, #terms, #privacy{
-    background-image: url("./images/menu_pattern_1.png");
-}
 
 .typewriter {
     border-right: solid 5px transparent;
@@ -183,8 +180,11 @@ ul.grey-color{
     height: 1.5rem;
 }
 /*TERMS*/
-body#terms, body#privacy{
+body#terms, body#privacy, body#refund{
     text-align: left;
     color: #666;
+}
+#faq, #terms, #privacy, #refund{
+    background-image: url("./images/menu_pattern_1.png");
 }
 /*END OF TERMS*/
