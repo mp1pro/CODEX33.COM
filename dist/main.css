@@ -184,7 +184,90 @@ body#terms, body#privacy, body#refund{
     text-align: left;
     color: #666;
 }
-#faq, #terms, #privacy, #refund{
+#faq, #terms, #privacy, #refund, #connect{
     background-image: url("./images/menu_pattern_1.png");
 }
 /*END OF TERMS*/
+/*START OF CONNECT*/
+.in-charge{
+    margin-left: 1.3rem;
+    margin-bottom: 1rem;
+}
+.left-text{
+    text-align: justify;
+    font-weight: 400;
+}
+.list-group-item{
+    text-align: left;
+    color: #ccc;
+    background-color: transparent;
+    border: 1px solid rgba(133, 133, 133, 0.25);
+}
+.logo-logo{
+    height:24px;
+    width: 24px;
+    /*background-color: white;*/
+}
+.logo-name{
+    min-width: 100px;
+    height:24px;
+    font-weight: 700;
+}
+.logo-detail{
+    font-weight: 400;
+}
+.connect{
+    color: #ccc;
+}
+.card{
+    background-color: unset;
+    font-weight: 400;
+}
+.slogan{
+    width: fit-content;
+    background-color: black;
+    border: #333333 dashed 1px;
+    border-radius: 5px;
+    padding: 3px 12px;
+    font-size: 0.85rem;
+}
+.slogan1, .slogan2{
+    font-family: 'pocket_calculatorregular', 'Source Sans Pro', sans-serif;
+    text-align: left;
+    color: #ccc
+}
+.slogan2{
+    margin-left: 1rem;
+}
+.slogan-col{
+    color: #00f000;
+}
+.mission{
+    font-size: 2rem;
+    width: 100%;
+}
+.mission > .slogan2{
+    margin-left: 8rem;
+}
+#mission{
+    max-height: 750px;
+    overflow: hidden;
+}
+.card-header{
+    padding:0;
+}
+.connect > section{
+    margin-bottom: 4rem;
+    border-bottom: 1px solid rgba(133, 133, 133, 0.25)
+}
+#canvas-parent{
+    max-height: 400px;
+}
+a.hover:hover{
+    color: red;
+}
+.logo-logo:hover{
+    height:26px;
+    width: 26px;
+}
+/*END OF CONNECT*/
