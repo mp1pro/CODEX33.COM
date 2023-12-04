@@ -184,7 +184,7 @@ body#terms, body#privacy, body#refund{
     text-align: left;
     color: #666;
 }
-#faq, #terms, #privacy, #refund, #connect{
+#faq, #terms, #privacy, #refund, #connect, #booking{
     background-image: url("./images/menu_pattern_1.png");
 }
 /*END OF TERMS*/
@@ -216,7 +216,7 @@ body#terms, body#privacy, body#refund{
 .logo-detail{
     font-weight: 400;
 }
-.connect{
+.connect, .booking{
     color: #ccc;
 }
 .card{
@@ -260,6 +260,12 @@ body#terms, body#privacy, body#refund{
     margin-bottom: 4rem;
     border-bottom: 1px solid rgba(133, 133, 133, 0.25)
 }
+.mar-bot-4{
+    margin-bottom: 4rem;
+}
+.bor-bot{
+    border-bottom: 1px solid rgba(133, 133, 133, 0.25)
+}
 #canvas-parent{
     max-height: 400px;
 }
@@ -274,3 +280,66 @@ a.hover:hover{
     color: white;
 }
 /*END OF CONNECT*/
+/*Start of booking*/
+.booking{
+      color: #ccc;
+}
+.carousel-item > img{
+    /*height: 30rem;*/
+    width: 20rem;
+}
+#slider{
+
+}
+#select-module .list-group-item:hover{
+    border: 1px solid rgba(133, 0, 0, 0.75);
+}
+#select-module .form-check-input:checked[type="radio"]{
+    background-image: unset;
+    background-color: rgba(133, 0, 0, 0.75);
+    border-color: green;
+}
+#select-module .form-check-input{
+
+}
+.form-check-input:focus{
+    box-shadow: unset;
+}
+.desc-label{
+    width:420px;
+}
+.name-label {
+    width:120px;
+}
+.name-label-1{
+    color: green;
+}
+.input-select1{
+    width: 4.9rem !important;
+}
+.black-bg{
+    background-color: black;
+    color: white;
+}
+.pad{
+    padding: 0.375rem 0rem 0.375rem 1.5rem
+}
+#select-module .form-control, .form-select{
+    border: 0.1rem solid rgba(233, 233, 233, 0.5);
+}
+#select-module .form-control:focus, .form-select:focus{
+    color: white;
+    background-color: black;
+    border-color: grey;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(0, 256, 0, 0.1);
+}
+select.form-select {
+    background-repeat: no-repeat;
+    background-position: left 0.25rem center;
+    background-size: 1rem;
+}
+#input1{
+
+}
+/*END OF BOOKING*/

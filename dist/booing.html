@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="./images/x.ico" sizes="16x16">
+    <!--    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+    -->
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style>
+        .container{
+            background-color: rgba(0,0,0,.3)
+        }
+    </style>
+</head>
+<body id="booking">
+<div class="container">
+    <nav class="navbar">
+        <div class="container-fluid r-pad">
+            <a class="navbar-brand" href="index.html">
+                <!--            <img src="" alt="codex33 logo" class="d-inline-block align-text-top">-->
+                <span class="header-title">X</span>
+            </a>
+            <div class="slogan">
+                <div class="slogan1">BY(<span class="slogan-col">CODERS</span>):</div>
+                <div class="slogan2">FOR !<span class="slogan-col">CODERS</span>%</div>
+            </div>
+<!--            <nav class="nav btn-group ms-auto">
+                <a class="nav-link btn btn-primary" href="booking.html">BOOK A CLASS</a>
+            </nav>-->
+        </div>
+    </nav>
+</div>
+<div class="container booking">
+    <main class="booking">
+        <section id="slider">
+            <h2 class=" border-bottom">MODULES</h2>
+            <div class="row g-0">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="./images/cat-matrix.gif" class="" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./images/marvinparke.jpeg" class="" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./images/menu_pattern_1.png" class="" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section id="select-module">
+            <div class="row g-0 mt-4">
+                <ul class="list-group">
+                    <li class="list-group-item pe-2">
+                        <input class="form-check-input me-1 align-top" type="radio" name="listGroupRadio" value="" id="firstRadio1" checked>
+                        <label class="form-check-label name-label name-label-1 me-4 align-top" for="firstRadio1">CO-MISSION</label>
+                        <!--<label
+                                class="form-check-label stretched-link d-none d-md-inline-block text-md-start text-lg-start desc-label"
+                                for="firstRadio1">An Introduction To Web Development
+                        </label>-->
+                        <textarea
+                                class="form-control d-none d-md-inline-block black-bg desc-label"
+                                value=""
+                                placeholder="State your needs  =>  Career Coaching, Interview-Practice, Projects, etc"
+                                id="input1"
+                        >
+                        </textarea>
+                        <!--<label class="form-check-label stretched-link float-end" for="firstRadio1">~20hr</label>-->
+                        <select
+                                class="form-select input-select1 d-inline-block align-top float-end black-bg pad mb-2"
+                                aria-label="Default select example">
+
+                            <option value="1">~ 1hr</option>
+                            <option value="2">~ 2hr</option>
+                            <option value="4">~ 4hr</option>
+                            <option value="20">~ 20hr</option>
+                        </select>
+                        <textarea
+                                class="form-control black-bg d-md-none"
+                                value=""
+                                placeholder="State your needs  =>   Career Coaching, Interview-Practice, Projects, etc"
+                                id="input2"
+                        >
+                        </textarea>
+                    </li>
+                </ul>
+            </div>
+            <!--<h2 class=" border-bottom">SELECT => MODULE</h2>-->
+            <div class="row g-0 mt-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                        <label class="form-check-label stretched-link name-label name-label-1 me-4" for="firstRadio">WEB-DEV-1</label>
+                        <label
+                                class="form-check-label stretched-link d-none d-md-inline-block text-md-start text-lg-start desc-label"
+                                for="firstRadio">An Introduction To Web Development
+                        </label>
+                        <label class="form-check-label stretched-link float-end" for="firstRadio">~20hr</label>
+                    </li>
+                    <li class="list-group-item">
+                        <input class="form-check-input me-1 ms-4" type="radio" name="listGroupRadio" value="" id="SecRadio" checked>
+                        <label class="form-check-label stretched-link name-label" for="SecRadio">HTML5</label>
+                        <label
+                                class="form-check-label stretched-link d-none d-md-inline-block text-md-start text-lg-start desc-label"
+                                for="SecRadio">Build a Website From Scratch
+                        </label>
+                        <label class="form-check-label stretched-link float-end" for="SecRadio">~ 4hr</label>
+                    </li>
+                    <li class="list-group-item">
+                        <input class="form-check-input me-1 ms-4" type="radio" name="listGroupRadio" value="" id="ThirdRadio" checked>
+                        <label class="form-check-label stretched-link name-label" for="ThirdRadio">CSS FLEX</label>
+                        <label
+                                class="form-check-label stretched-link d-none d-md-inline-block text-md-start text-lg-start desc-label"
+                                for="ThirdRadio">An Introduction To Web Development
+                        </label>
+                        <label class="form-check-label stretched-link float-end" for="ThirdRadio">~ 4hr</label>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</div>
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <ul class="nav col-12 col-sm-12 col-md-12 col-lg-5 justify-content-start list-unstyled d-flex mb-3">
+            <!--   <li class="ms-3">
+                   <a class="" href="#">
+                       <img class="icons" src="images/social/youtube_play_video_icon.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="" href="#">
+                       <img class="icons" src="images/social/tiktok.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="" href="#">
+                       <img class="icons" src="images/social/twitch_social_media_icon.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="" href="#">
+                       <img class="icons" src="images/social/discord_icon.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="text-muted" href="#">
+                       <img class="icons" src="images/social/pinterest_social_media_icon.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="text-muted" href="#">
+                       <img class="icons" src="images/social/facebook_logo_icon.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="text-muted" href="#">
+                       <img class="icons" src="images/social/twitter-x-logo-png.png">
+                   </a>
+               </li>-->
+            <li class="">
+                <a class="text-muted hover" href="https://github.com/mp1pro">
+                    <img class="logo-logo me-3" src="images/github-mark-white.svg"/>
+                </a>
+            </li>
+            <li class="ms-3">
+                <a class="text-muted hover" href="https://www.linkedin.com/in/marvinparke/">
+                    <img class="logo-logo me-3" src="images/linkedin-icon.svg"/>
+                </a>
+            </li>
+        </ul>
+
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2 d-flex align-items-center justify-content-sm-start justify-content-md-start justify-content-lg-end mb-3">
+            <!--<a href="/" class="me-2 mb-md-0 text-muted text-decoration-none lh-1 ms-3">
+                <span class="footer-title">X</span>
+            </a>-->
+            <span class="mb-md-0 text-muted">© 2023 CODEX33</span>
+        </div>
+
+        <ul class="nav col-12 col-sm-8 col-md-8 col-lg-5 justify-content-xs-start justify-content-sm-end mb-3">
+            <li class="nav-item"><a href="connect.html" class="nav-link footer ps-0">Connect</a></li>
+            <li class="nav-item"><a href="refund-policy.html" class="nav-link footer px-2  ">Refund Policy</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link footer px-2  ">Privacy Policy</a></li>
+            <li class="nav-item"><a href="terms-of-service.html" class="nav-link footer px-2   px-right-none">Terms</a></li>
+        </ul>
+    </footer>
+</div>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+
+</script>
+<script defer src="matrix-cat.js"></script>
+</body>
+</html>
