@@ -279,6 +279,9 @@ a.hover:hover{
 .header{
     color: white;
 }
+.nav-link.mission-footer{
+    color: green;
+}
 /*END OF CONNECT*/
 /*Start of booking*/
 .booking{
