@@ -342,7 +342,9 @@ select.form-select {
     background-position: left 0.25rem center;
     background-size: 1rem;
 }
-#input1{
-
+iframe{
+    border-radius: 0.25rem;
+    background-color: black;
 }
+
 /*END OF BOOKING*/
