@@ -39,7 +39,7 @@
 <div class="container booking">
     <main class="booking">
         <h2 class=" border-bottom">MODULES</h2>
-        <section id="slider">
+        <!--<section id="slider">
 
             <div class="row g-0">
                 <div id="carouselExample" class="carousel slide">
@@ -64,12 +64,12 @@
                     </button>
                 </div>
             </div>
-        </section>
+        </section>-->
         <section id="select-module">
             <div class="row g-0 mt-4">
-                <ul class="list-group">
-                    <li class="list-group-item pe-2">
-                        <input class="form-check-input me-1 align-top" type="radio" name="listGroupRadio" value="" id="firstRadio1" checked>
+                <ul class="list-group nav-tabs" role="tablist">
+                    <li id="co-mission" class="list-group-item pe-2">
+                        <input data-bs-toggle="tab" data-bs-target="#one-hr-mission" class="form-check-input me-1 align-top nav-item active" type="radio" role="tab" name="listGroupRadio" value="" aria-controls="one-hr-mission" aria-selected="true" id="firstRadio1" checked>
                         <label class="form-check-label name-label name-label-1 me-4 align-top" for="firstRadio1">CO-MISSION</label>
                         <!--<label
                                 class="form-check-label stretched-link d-none d-md-inline-block text-md-start text-lg-start desc-label"
@@ -103,21 +103,21 @@
             </div>
             <!--<h2 class=" border-bottom">SELECT => MODULE</h2>-->
             <div class="row g-0 mt-4">
-                <ul class="list-group">
+                <ul class="list-group nav nav-tabs">
                     <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
-                        <label class="form-check-label stretched-link name-label name-label-1 me-4" for="firstRadio">WEB-DEV-1</label>
+                        <input data-bs-toggle="tab" data-bs-target="#twenty-hr-web1" class="form-check-input me-1 nav-item" type="radio" role="tab" name="listGroupRadio" value="" aria-controls="twenty-hr-web1" aria-selected="false" id="firstRadio" checked>
+                        <label class="form-check-label name-label name-label-1 me-4 stretched-link" for="firstRadio">WEB-DEV-1</label>
                         <label
-                                class="form-check-label stretched-link d-none d-md-inline-block text-md-start text-lg-start desc-label"
+                                class="form-check-label d-none d-md-inline-block text-md-start text-lg-start desc-label stretched-link"
                                 for="firstRadio">An Introduction To Web Development
                         </label>
-                        <label class="form-check-label stretched-link float-end" for="firstRadio">~20hr</label>
+                        <label class="form-check-label float-end stretched-link" for="firstRadio">~20hr</label>
                     </li>
-                    <li class="list-group-item">
+                    <!--<li class="list-group-item">
                         <input class="form-check-input me-1 ms-4" type="radio" name="listGroupRadio" value="" id="SecRadio" checked>
                         <label class="form-check-label stretched-link name-label" for="SecRadio">HTML5</label>
                         <label
-                                class="form-check-label stretched-link d-none d-md-inline-block text-md-start text-lg-start desc-label"
+                                    class="form-check-label stretched-link d-none d-md-inline-block text-md-start text-lg-start desc-label"
                                 for="SecRadio">Build a Website From Scratch
                         </label>
                         <label class="form-check-label stretched-link float-end" for="SecRadio">~ 4hr</label>
@@ -157,16 +157,21 @@
                                 for="SixRadio">CRUD Operations via Fetch Promises
                         </label>
                         <label class="form-check-label stretched-link float-end" for="SixRadio">~ 4hr</label>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </section>
         <section id="calendar">
-            <div class="row g-0 mt-4">
-                <!-- Calendly inline widget begin -->
-                <div class="calendly-inline-widget" data-url="https://calendly.com/x33/test1?hide_event_type_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=ff7d00" style="min-width:320px;height:700px;"></div>
-                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                <!-- Calendly inline widget end -->
+            <div class="tab-content">
+                <div id="one-hr-mission" class="row g-0 mt-4 tab-pane active show" role="tabpanel" aria-labelledby="one-hr-mission-tab">
+                    <!-- Calendly inline widget begin -->
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/x33/test1?hide_event_type_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=ff7d00" style="min-width:320px;height:700px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    <!-- Calendly inline widget end -->
+                </div>
+                <div id="twenty-hr-web1" class="row g-0 mt-4 tab-pane" role="tabpanel" aria-labelledby="twenty-hr-web1-tab">
+                    <h2>test</h2>
+                </div>
             </div>
         </section>
     </main>
@@ -237,12 +242,14 @@
         </ul>
     </footer>
 </div>
+
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous">
 
 </script>
+<script  src="booking.js"></script>
 <!--<script defer src="matrix-cat.js"></script>-->
 </body>
 </html>
