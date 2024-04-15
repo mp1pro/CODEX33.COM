@@ -27,3 +27,8 @@ const coMission = document.getElementById("co-mission")
 coMission.addEventListener("click", (event) => {
     document.getElementById('firstRadio1').click();
 });
+window.addEventListener("load", (event) => {
+    let on_load = document.getElementById('firstRadio1')
+    on_load.click();
+    on_load.classList.add("show","active")
+});

@@ -356,4 +356,8 @@ iframe{
 .tab-pane{
     background-color: black;
 }
+.nav-tabs{
+    border: unset;
+}
+
 /*END OF BOOKING*/
