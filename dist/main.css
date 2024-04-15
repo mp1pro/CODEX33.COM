@@ -347,4 +347,13 @@ iframe{
     background-color: black;
 }
 
+.cal-title{
+    margin: 0 auto;
+    text-align: center;
+    width: 300px;
+
+}
+.tab-pane{
+    background-color: black;
+}
 /*END OF BOOKING*/
