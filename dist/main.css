@@ -312,7 +312,8 @@ a.hover:hover{
     width:420px;
 }
 .name-label {
-    width:120px;
+    max-width: 120px;
+    min-width: 100px;
 }
 .name-label-1{
     color: green;
@@ -361,6 +362,12 @@ iframe{
 }
 .name-label-2{
     color: #ff7d00;
+}
+.booking li{
+    height: 60px;
+}
+#co-mission{
+    height: 100px;
 }
 
 /*END OF BOOKING*/

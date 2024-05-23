@@ -96,6 +96,7 @@
                                 value=""
                                 placeholder="State your needs  =>   Career Coaching, Interview-Practice, Projects, etc"
                                 id="input2"
+                                rows="1"
                         ></textarea>
                     </li>
                 </ul>
@@ -104,58 +105,88 @@
             <div class="row g-0 mt-4">
                 <ul class="list-group nav nav-tabs">
                     <li class="list-group-item">
-                        <input data-bs-toggle="tab" data-bs-target="#twenty-hr-web1" class="form-check-input nav-item" type="radio" role="tab" name="listGroupRadio" value="" aria-controls="twenty-hr-web1" aria-selected="false" id="firstRadio">
-                        <label class="form-check-label name-label name-label-1 stretched-link" for="firstRadio">WEB-DEV-1</label>
+                        <input data-bs-toggle="tab" data-bs-target="#twenty-hr-web1" class="form-check-input nav-item col-md-1 " type="radio" role="tab" name="listGroupRadio" value="" aria-controls="twenty-hr-web1" aria-selected="false" id="firstRadio">
+                        <label class="form-check-label name-label name-label-1 stretched-link col-md-1" for="firstRadio">WEB-DEV-1</label>
                         <label
-                                class="form-check-label d-none d-md-inline-block text-md-start text-lg-start desc-label stretched-link"
+                                class="form-check-label d-none d-md-inline-block text-md-start text-lg-start stretched-link col-md-6"
                                 for="firstRadio">An Introduction To Web Development
                         </label>
-                        <label class="form-check-label float-end stretched-link" for="firstRadio">~20hr</label>
+                        <label class="form-check-label text-end stretched-link" for="firstRadio">~20hr</label>
+                        <label class="form-check-label float-end text-end col-md-2" for="firstRadio">
+                            <span class="text-success">[</span>
+                                <span class="fs-6">US $666.00</span>
+                            <span class="text-success">]</span>
+                        </label>
                     </li>
-                    <li class="list-group-item">
-<!--                        <input class="form-check-input me-1 ms-4" type="radio" name="listGroupRadio" value="" id="SecRadio" checked>-->
-                        <label class="form-check-label name-label name-label-2 ms-4" for="SecRadio">HTML5</label>
+                    <li class="list-group-item fw-light">
+                        <input class="form-check-input ms-4 col-md-1" type="radio" name="listGroupRadio" value="" id="SecRadio" checked>
+                        <label class="form-check-label name-label name-label-2 ms-1 col-md-1" for="SecRadio">HTML5</label>
                         <label
-                                    class="form-check-label d-none d-md-inline-block ms-4 text-md-start text-lg-start desc-label"
+                                class="form-check-label d-none d-md-inline-block text-md-start text-lg-start col-md-6"
                                 for="SecRadio">Build a Website From Scratch
                         </label>
-                        <label class="form-check-label float-end" for="SecRadio">~ 4hr</label>
+                        <label class="form-check-label text-end" for="SecRadio">~ 4hr</label>
+                        <label class="form-check-label float-end text-end col-md-2" for="SecRadio">
+                            <span class="text-success">[</span>
+                                <span class="fs-6">US $133.30</span>
+                            <span class="text-success">]</span>
+                        </label>
                     </li>
-                    <li class="list-group-item">
-<!--                        <input class="form-check-input me-1 ms-4" type="radio" name="listGroupRadio" value="" id="ThirdRadio" checked>-->
-                        <label class="form-check-label name-label name-label-2 ms-4" for="ThirdRadio">CSS FLEX</label>
+                    <li class="list-group-item fw-light">
+                        <input class="form-check-input ms-4 col-md-1" type="radio" name="listGroupRadio" value="" id="ThirdRadio" checked>
+                        <label class="form-check-label name-label name-label-2 ms-1 col-md-1" for="ThirdRadio">CSS FLEX</label>
                         <label
-                                class="form-check-label d-none d-md-inline-block ms-4 text-md-start text-lg-start desc-label"
+                                class="form-check-label d-none d-md-inline-block text-md-start text-lg-start col-md-6"
                                 for="ThirdRadio">Using Flexbox for CSS Styling
                         </label>
-                        <label class="form-check-label float-end" for="ThirdRadio">~ 4hr</label>
+                        <label class="form-check-label text-end" for="ThirdRadio">~ 4hr</label>
+                        <label class="form-check-label float-end text-end col-md-2" for="ThirdRadio">
+                            <span class="text-success">[</span>
+                                <span class="fs-6">US $133.30</span>
+                            <span class="text-success">]</span>
+                        </label>
                     </li>
-                    <li class="list-group-item">
-<!--                        <input class="form-check-input me-1 ms-4" type="radio" name="listGroupRadio" value="" id="FourthRadio" checked>-->
-                        <label class="form-check-label name-label name-label-2 ms-4" for="FourthRadio">Intro to JS</label>
+                    <li class="list-group-item fw-light">
+                        <input class="form-check-input ms-4 col-md-1" type="radio" name="listGroupRadio" value="" id="FourthRadio" checked>
+                        <label class="form-check-label name-label name-label-2 ms-1 col-md-1" for="FourthRadio">Intro to JS</label>
                         <label
-                                class="form-check-label d-none ms-4 d-md-inline-block text-md-start text-lg-start desc-label"
+                                class="form-check-label d-none d-md-inline-block text-md-start text-lg-start col-md-6"
                                 for="FourthRadio">An Introduction To JavaScript
                         </label>
-                        <label class="form-check-label float-end" for="FourthRadio">~ 4hr</label>
-                    </li>
-                    <li class="list-group-item">
-<!--                        <input class="form-check-input me-1 ms-4" type="radio" name="listGroupRadio" value="" id="FifthRadio" checked>-->
-                        <label class="form-check-label name-label name-label-2 ms-4" for="FifthRadio">AJAX API</label>
-                        <label
-                                class="form-check-label d-none ms-4 d-md-inline-block text-md-start text-lg-start desc-label"
-                                for="FifthRadio">Update Webpage via Asynchronously API calls
+                        <label class="form-check-label text-end" for="FourthRadio">~ 4hr</label>
+                        <label class="form-check-label float-end text-end col-md-2" for="FourthRadio">
+                            <span class="text-success">[</span>
+                                <span class="fs-6">US $133.30</span>
+                            <span class="text-success">]</span>
                         </label>
-                        <label class="form-check-label float-end" for="FifthRadio">~ 4hr</label>
                     </li>
-                    <li class="list-group-item">
-<!--                        <input class="form-check-input me-1 ms-4" type="radio" name="listGroupRadio" value="" id="SixRadio" checked>-->
-                        <label class="form-check-label name-label name-label-2 ms-4" for="SixRadio">Fetch API</label>
+                    <li class="list-group-item fw-light">
+                        <input class="form-check-input ms-4 col-md-1" type="radio" name="listGroupRadio" value="" id="FifthRadio" checked>
+                        <label class="form-check-label name-label name-label-2 ms-1 col-md-1" for="FifthRadio">AJAX API</label>
                         <label
-                                class="form-check-label d-none ms-4 d-md-inline-block text-md-start text-lg-start desc-label"
+                                class="form-check-label d-none d-md-inline-block text-md-start text-lg-start col-md-6"
+                                for="FifthRadio">Build Webpage via Async calls
+                        </label>
+                        <label class="form-check-label text-end" for="FifthRadio">~ 4hr</label>
+                        <label class="form-check-label float-end text-end col-md-2" for="FifthRadio">
+                            <span class="text-success">[</span>
+                                <span class="fs-6">US $133.30</span>
+                            <span class="text-success">]</span>
+                        </label>
+                    </li>
+                    <li class="list-group-item fw-light">
+                        <input class="form-check-input ms-4 col-md-1" type="radio" name="listGroupRadio" value="" id="SixRadio" checked>
+                        <label class="form-check-label name-label name-label-2 ms-1 col-md-1" for="SixRadio">Fetch API</label>
+                        <label
+                                class="form-check-label d-none d-md-inline-block text-md-start text-lg-start col-md-6"
                                 for="SixRadio">CRUD Operations via Fetch Promises
                         </label>
-                        <label class="form-check-label float-end" for="SixRadio">~ 4hr</label>
+                        <label class="form-check-label text-end" for="SixRadio">~ 4hr</label>
+                        <label class="form-check-label float-end text-end col-md-2" for="SixRadio">
+                            <span class="text-success">[</span>
+                                <span class="fs-6">US $133.30</span>
+                            <span class="text-success">]</span>
+                        </label>
                     </li>
                 </ul>
             </div>
@@ -183,7 +214,7 @@
 
 <div class="container">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <ul class="nav col-12 col-sm-12 col-md-12 col-lg-5 justify-content-start list-unstyled d-flex mb-3">
+        <ul class="nav col-6 col-sm-8 col-md-12 col-lg-5 justify-content-start list-unstyled d-flex mb-3">
             <!--   <li class="ms-3">
                    <a class="" href="#">
                        <img class="icons" src="images/social/youtube_play_video_icon.png">
@@ -231,14 +262,14 @@
             </li>
         </ul>
 
-        <div class="col-12 col-sm-4 col-md-4 col-lg-2 d-flex align-items-center justify-content-sm-start justify-content-md-start justify-content-lg-end mb-3">
+        <div class="col-6 col-sm-4 col-md-4 col-lg-2 d-flex align-items-center justify-content-end justify-content-sm-end justify-content-md-start justify-content-lg-end mb-3">
             <!--<a href="/" class="me-2 mb-md-0 text-muted text-decoration-none lh-1 ms-3">
                 <span class="footer-title">X</span>
             </a>-->
-            <span class="mb-md-0 text-muted">© 2023 CODEX33</span>
+            <span class="mb-md-0 text-muted ms-3">© 2023 CODEX33</span>
         </div>
 
-        <ul class="nav col-12 col-sm-8 col-md-8 col-lg-5 justify-content-sm-end mb-3">
+        <ul class="nav col-12 col-sm-12 col-md-8 col-lg-5 justify-content-sm-end mb-3">
             <li class="nav-item"><a href="mission.html" class="nav-link footer px-2  ms-2 mission-footer">MISSION</a></li>
             <li class="nav-item"><a href="refund-policy.html" class="nav-link footer px-2  ">Refund Policy</a></li>
             <li class="nav-item"><a href="privacy-policy.html" class="nav-link footer px-2  ">Privacy Policy</a></li>
