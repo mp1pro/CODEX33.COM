@@ -1,17 +1,27 @@
 let triggerTabList = document.querySelectorAll('input[data-bs-toggle="tab"]')
-console.log("shoot", triggerTabList)
+let hour = document.getElementById("hours");
+//console.log("shoot", triggerTabList)
 
 for (let i = 0; i < triggerTabList.length; i++) {
     console.log("shoot",triggerTabList[i])
 
     triggerTabList[i].addEventListener('click', function (event) {
         let toShow = triggerTabList[i].attributes[1].nodeValue
-        console.log(" ctoShow ",toShow)
+        //console.log(" ctoShow ",toShow)
 
         document.querySelectorAll(".tab-content .tab-pane").forEach(obj=>obj.classList.remove("active","show"));
-        console.log(" ctoShow1 ",triggerTabList[i])
-        if(toShow === "#one-hr-mission"){
+        //console.log(" ctoShow1 ",triggerTabList[i])
+        console.log(" hour ",hour.value)
+        if(toShow === "#one-hr-mission" && hour.value === "1"){
             const element = document.getElementById("one-hr-mission")
+            element.classList.add("show","active")
+        }
+        else if(toShow === "#one-hr-mission" && hour.value === "2"){
+            const element = document.getElementById("two-hr-mission")
+            element.classList.add("show","active")
+        }
+        else if(toShow === "#one-hr-mission" && hour.value === "4"){
+            const element = document.getElementById("four-hr-mission")
             element.classList.add("show","active")
         }
         else if (toShow === "#twenty-hr-web1"){
@@ -48,7 +58,9 @@ coMission.addEventListener("click", (event) => {
     document.getElementById('firstRadio1').click();
 });
 window.addEventListener("load", (event) => {
+    hour.value = "1"
     let on_load = document.getElementById('firstRadio1')
     on_load.click();
     on_load.classList.add("show","active")
+    //set button to 1 hour
 });
