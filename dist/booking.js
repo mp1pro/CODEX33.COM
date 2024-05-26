@@ -18,6 +18,26 @@ for (let i = 0; i < triggerTabList.length; i++) {
             const element = document.getElementById("twenty-hr-web1")
             element.classList.add("show","active")
         }
+        else if (toShow === "#html5-4hr"){
+            const element = document.getElementById("html5-4hr")
+            element.classList.add("show","active")
+        }
+        else if (toShow === "#css-flex"){
+            const element = document.getElementById("css-flex")
+            element.classList.add("show","active")
+        }
+        else if (toShow === "#intro-to-js"){
+            const element = document.getElementById("intro-to-js")
+            element.classList.add("show","active")
+        }
+        else if (toShow === "#ajax-api"){
+            const element = document.getElementById("ajax-api")
+            element.classList.add("show","active")
+        }
+        else if (toShow === "#fetch-api"){
+            const element = document.getElementById("fetch-api")
+            element.classList.add("show","active")
+        }
         // let thisOne = document.getElementById(""+toShow+"")
         // thisOne.classList.add("active","show");
     })
