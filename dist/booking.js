@@ -1,13 +1,22 @@
 let triggerTabList = document.querySelectorAll('input[data-bs-toggle="tab"]')
 let hour = document.getElementById("hours");
 //console.log("shoot", triggerTabList)
+let firstLoad = true
 
 for (let i = 0; i < triggerTabList.length; i++) {
     console.log("shoot",triggerTabList[i])
 
     triggerTabList[i].addEventListener('click', function (event) {
         let toShow = triggerTabList[i].attributes[1].nodeValue
-        //console.log(" ctoShow ",toShow)
+        console.log(" ctoShow ",triggerTabList[i].id)
+        let ID_ = triggerTabList[i].id
+        if(ID_ !== "firstRadio1"){
+            window.location.href = "#" + ID_
+        }
+        else if(ID_ === "firstRadio1" && firstLoad === false){
+            window.location.href = "#" + ID_
+        }
+
 
         document.querySelectorAll(".tab-content .tab-pane").forEach(obj=>obj.classList.remove("active","show"));
         //console.log(" ctoShow1 ",triggerTabList[i])
@@ -61,6 +70,7 @@ window.addEventListener("load", (event) => {
     hour.value = "1"
     let on_load = document.getElementById('firstRadio1')
     on_load.click();
-    on_load.classList.add("show","active")
+    firstLoad = false
+    //on_load.classList.add("show","active")
     //set button to 1 hour
 });
