@@ -17,6 +17,10 @@ body {
     font-weight: 700;
 }
 
+.widget-hidden{
+    display: block !important;
+}
+
 .typewriter {
     border-right: solid 5px transparent;
     white-space: nowrap;
