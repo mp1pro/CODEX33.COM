@@ -62,8 +62,12 @@ for (let i = 0; i < triggerTabList.length; i++) {
     })
 }
 /* Setup click in list checks radio*/
-const coMission = document.getElementById("co-mission")
-coMission.addEventListener("click", (event) => {
+const textBox = document.getElementById("input1")
+textBox.addEventListener("click", (event) => {
+    document.getElementById('firstRadio1').click();
+});
+const hours = document.getElementById("hours")
+hours.addEventListener("change", (event) => {
     document.getElementById('firstRadio1').click();
 });
 window.addEventListener("load", (event) => {
