@@ -397,5 +397,32 @@ iframe{
 .booking-chat{
     margin-left: auto;
 }
+/*WhatsApp Stuff*/
+.whatsapp-button {
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    font-size:48px;
+    color: #ff7d00;
+    z-index: 9999;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.25);
+    color: red;
+}
+
+.mail-button {
+    position: fixed;
+    bottom: 50px;
+    right: 15px;
+    font-size:48px;
+    color: #ff7d00;
+    z-index: 9999;
+}
+.mail-button:hover {
+    transform: scale(1.25);
+    color: red;
+}
 
 /*END OF BOOKING*/
