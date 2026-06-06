@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="icon" type="image/x-icon" href="./images/x.ico" sizes="16x16">
+    <!--    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+    -->
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style>
+
+        .contact-form {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #aaa;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 2px 2px 10px 1px red;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-row label {
+            width: 120px;           /* fixed label width = alignment */
+            font-weight: 600;
+            color: #333;
+            text-align: left;
+        }
+
+        .form-row input,
+        .form-row textarea {
+            flex: 1;
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.2s ease;
+            font-size: 14px;
+        }
+
+        .form-row input:focus,
+        .form-row textarea:focus {
+            border-color: red;
+            box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
+        }
+
+        .form-row textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: red;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #ff7d00
+        }
+
+        /* 📱 Mobile responsiveness */
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+            }
+
+            .form-row label {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body id="booking">
+<div class="container">
+    <nav class="navbar">
+        <div class="container-fluid r-pad">
+            <a class="navbar-brand" href="index.html">
+                <!--            <img src="" alt="codex33 logo" class="d-inline-block align-text-top">-->
+                <span class="header-title">X</span>
+            </a>
+            <div class="slogan">
+                <div class="slogan1">BY(<span class="slogan-col">CODERS</span>):</div>
+                <div class="slogan2">FOR !<span class="slogan-col">CODERS</span>%</div>
+            </div>
+            <!--            <nav class="nav btn-group ms-auto">
+                            <a class="nav-link btn btn-primary" href="booking.html">BOOK A CLASS</a>
+                        </nav>-->
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <h2 class="contactus border-bottom">CONTACT US</h2>
+    <main class="contactus form-container">
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="61b41246-4890-4449-b0ca-5cb33a37a07b">
+            <div class="form-row">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-row">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-row">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+</div>
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <ul class="nav col-6 col-sm-8 col-md-12 col-lg-5 justify-content-start list-unstyled d-flex mb-3">
+            <!--   <li class="ms-3">
+                   <a class="" href="#">
+                       <img class="icons" src="images/social/youtube_play_video_icon.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="" href="#">
+                       <img class="icons" src="images/social/tiktok.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="" href="#">
+                       <img class="icons" src="images/social/twitch_social_media_icon.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="" href="#">
+                       <img class="icons" src="images/social/discord_icon.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="text-muted" href="#">
+                       <img class="icons" src="images/social/pinterest_social_media_icon.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="text-muted" href="#">
+                       <img class="icons" src="images/social/facebook_logo_icon.png">
+                   </a>
+               </li>
+               <li class="ms-3">
+                   <a class="text-muted" href="#">
+                       <img class="icons" src="images/social/twitter-x-logo-png.png">
+                   </a>
+               </li>-->
+            <li class="ms-3">
+                <a class="text-muted hover" href="https://github.com/mp1pro">
+                    <img class="logo-logo me-3" src="images/github-mark-white.svg"/>
+                </a>
+            </li>
+            <li class="ms-3">
+                <a class="text-muted hover" href="https://www.linkedin.com/in/marvinparke/">
+                    <img class="logo-logo me-3" src="images/linkedin-icon.svg"/>
+                </a>
+            </li>
+        </ul>
+
+        <div class="col-6 col-sm-4 col-md-4 col-lg-2 d-flex align-items-center justify-content-end justify-content-sm-end justify-content-md-start justify-content-lg-end mb-3">
+            <!--<a href="/" class="me-2 mb-md-0 text-muted text-decoration-none lh-1 ms-3">
+                <span class="footer-title">X</span>
+            </a>-->
+            <span class="mb-md-0 text-muted ms-3">© 2023 CODEX33</span>
+        </div>
+
+        <ul class="nav col-12 col-sm-12 col-md-8 col-lg-5 justify-content-sm-end mb-3">
+            <li class="nav-item"><a href="mission.html" class="nav-link footer px-2  ms-2 mission-footer">MISSION</a></li>
+            <li class="nav-item"><a href="refund-policy.html" class="nav-link footer px-2  ">Refund Policy</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link footer px-2  ">Privacy Policy</a></li>
+            <li class="nav-item"><a href="terms-of-service.html" class="nav-link footer px-2   px-right-none">Terms</a></li>
+        </ul>
+    </footer>
+
+    <a
+            href="https://wa.me/18763181442?text=Hello%20I%20would%20like%20more%20information."
+            class="whatsapp-button"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat on WhatsApp"
+    >
+        <i class="fa fa-whatsapp" aria-hidden="true"></i>
+    </a>
+</div>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+
+</script>
+<script  src="booking.js"></script>
+<!--<script defer src="matrix-cat.js"></script>-->
+<!--Start of Tawk.to Script-->
+
+<!--End of Tawk.to Script-->
+</body>
+</html>
