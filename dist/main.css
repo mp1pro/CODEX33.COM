@@ -397,6 +397,75 @@ iframe{
 .booking-chat{
     margin-left: auto;
 }
+
+/*cashapp Stuff*/
+.pay-label {
+    position: fixed;
+    bottom: 255px;
+    right: 17px;
+    font-size: 0.7rem;
+    color: green;
+    border: #00f000 solid 1px;
+    border-radius: 0.2rem;
+    padding: 0.3rem;
+    z-index: 9999;
+
+    display: inline-block;
+    cursor: pointer;
+}
+.content-box {
+    display: block;
+}
+/* Hide the actual checkbox completely */
+.toggle-input {
+    display: none;
+}
+.icon-box {
+    display: none;
+    font-size:1.75rem;
+    color: red;
+}
+
+.toggle-input:checked ~ .content-box {
+    display: none;
+}
+
+.toggle-input:checked ~ .icon-box {
+    display: inline-block;
+}
+
+/*cashapp Stuff*/
+.cashapp-button {
+    position: fixed;
+    bottom: 160px;
+    right: 17px;
+    font-size: 4.3rem;
+    color: green;
+    -webkit-text-stroke: 5px #000000;
+    z-index: 9999;
+}
+
+.cashapp-button:hover {
+    transform: scale(1.15);
+    color: red;
+}
+
+/*btc Stuff*/
+.btc-button {
+    position: fixed;
+    bottom: 105px;
+    right: 16px;
+    font-size: 3.5rem;
+    color: green;
+    -webkit-text-stroke: 3px #000000;
+    z-index: 9999;
+}
+
+.btc-button:hover {
+    transform: scale(1.15);
+    color: red;
+}
+
 /*WhatsApp Stuff*/
 .whatsapp-button {
     position: fixed;
