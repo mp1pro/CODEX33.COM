@@ -494,4 +494,29 @@ iframe{
     color: red;
 }
 
+@media (max-width: 576px) {
+    .pay-label {
+        font-size: 0.5rem;
+        bottom: 195px;
+    }
+    .mail-button{
+        font-size:2rem;
+    }
+    .whatsapp-button {
+        font-size:2.2rem;
+        bottom: 40px;
+    }
+    .btc-button {
+        font-size:3rem;
+        bottom: 80px;
+    }
+    .cashapp-button {
+        font-size:3.3rem;
+        bottom: 125px;
+    }
+    .pay-label, .mail-button, .whatsapp-button, .btc-button, .cashapp-button{
+        right: 5px;
+    }
+}
+
 /*END OF BOOKING*/
