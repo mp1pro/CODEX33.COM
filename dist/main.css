@@ -400,6 +400,7 @@ iframe{
 
 /*cashapp Stuff*/
 .pay-label {
+    display: none;
     position: fixed;
     bottom: 255px;
     right: 17px;
@@ -410,7 +411,7 @@ iframe{
     padding: 0.3rem;
     z-index: 9999;
 
-    display: inline-block;
+    /*display: inline-block;*/
     cursor: pointer;
 }
 .content-box {
@@ -436,6 +437,7 @@ iframe{
 
 /*cashapp Stuff*/
 .cashapp-button {
+    display: none;
     position: fixed;
     bottom: 160px;
     right: 17px;
@@ -452,6 +454,7 @@ iframe{
 
 /*btc Stuff*/
 .btc-button {
+    display: none;
     position: fixed;
     bottom: 105px;
     right: 16px;

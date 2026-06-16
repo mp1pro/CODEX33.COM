@@ -21,7 +21,7 @@
         }
     </style>
 </head>
-<body id="booking" class="me-3 me-sm-0">
+<body id="booking" class="">
 <div class="container">
     <nav class="navbar">
         <div class="container-fluid r-pad">
@@ -84,7 +84,13 @@
                                 placeholder="State your needs  =>  Career Coaching, Interview-Practice, Projects, etc"
                                 id="input1"
                         ></textarea>
-                        <!--<label class="form-check-label stretched-link float-end" for="firstRadio1">~20hr</label>-->
+                        <label class="form-check-label align-top float-end d-md-inline-block fw-light " for="firstRadio1">
+                            <span class="text-success">[</span>
+
+                                <span class="fs-6">US $33.33/hr</span>
+
+                            <span class="text-success">]</span>
+                        </label>
                         <select
                                 id="hours"
                                 class="form-select input-select1 d-inline-block align-top float-end black-bg pad mb-2"
@@ -118,14 +124,14 @@
                         <label class="form-check-label float-end text-end col-md-2" for="firstRadio">
                             <span class="name-label-2">{</span>
 
-                            <span class="fs-6 text-danger">25% OFF__</span>
+                            <span class="fs-6 text-danger">50% OFF__</span>
 
                             <span class="name-label-2">}</span>
                         </label>
                         <label class="form-check-label float-end text-end col-md-2" for="firstRadio">
                             <span class="text-success">[</span>
 
-                                <span class="fs-6">US $999.99</span>
+                                <span class="fs-6">US $330.00</span>
 
                             <span class="text-success">]</span>
                         </label>
@@ -140,7 +146,7 @@
                         <label class="form-check-label text-end" for="SecRadio">~ 4hr</label>
                         <label class="form-check-label float-end text-end col-md-2" for="SecRadio">
                             <span class="text-success">[</span>
-                                <span class="fs-6">US $266.66</span>
+                                <span class="fs-6">US $133.66</span>
                             <span class="text-success">]</span>
                         </label>
                     </li>
@@ -154,7 +160,7 @@
                         <label class="form-check-label text-end" for="ThirdRadio">~ 4hr</label>
                         <label class="form-check-label float-end text-end col-md-2" for="ThirdRadio">
                             <span class="text-success">[</span>
-                                <span class="fs-6">US $266.66</span>
+                                <span class="fs-6">US $133.66</span>
                             <span class="text-success">]</span>
                         </label>
                     </li>
@@ -168,7 +174,7 @@
                         <label class="form-check-label text-end" for="FourthRadio">~ 4hr</label>
                         <label class="form-check-label float-end text-end col-md-2" for="FourthRadio">
                             <span class="text-success">[</span>
-                                <span class="fs-6">US $266.66</span>
+                                <span class="fs-6">US $133.66</span>
                             <span class="text-success">]</span>
                         </label>
                     </li>
@@ -182,7 +188,7 @@
                         <label class="form-check-label text-end" for="FifthRadio">~ 4hr</label>
                         <label class="form-check-label float-end text-end col-md-2" for="FifthRadio">
                             <span class="text-success">[</span>
-                                <span class="fs-6">US $266.66</span>
+                                <span class="fs-6">US $133.66</span>
                             <span class="text-success">]</span>
                         </label>
                     </li>
@@ -196,7 +202,7 @@
                         <label class="form-check-label text-end" for="SixRadio">~ 4hr</label>
                         <label class="form-check-label float-end text-end col-md-2" for="SixRadio">
                             <span class="text-success">[</span>
-                                <span class="fs-6">US $266.66</span>
+                                <span class="fs-6">US $133.66</span>
                             <span class="text-success">]</span>
                         </label>
                     </li>
@@ -460,11 +466,23 @@
         <i class="fa fa-dollar" aria-hidden="true"></i>
     </a>
     <a
-            href=""
+            href="javascript:void(0)"
             class="btc-button"
-            target="_blank"
+            id="bitcoin-link"
             rel="noopener noreferrer"
             aria-label="Pay with Bitcoin"
+            data-bs-toggle="popover"
+            data-bs-container="body"
+            data-bs-trigger="click"
+            data-bs-placement="left"
+            data-bs-content="
+        <a href='https://wa.me/18765551234' target='_blank' class='btn btn-success btn-sm mb-2 w-100'>
+            WhatsApp
+        </a>
+        <a href='mailto:support@example.com' class='btn btn-primary btn-sm w-100'>
+            Email
+        </a>
+    "
     >
         <i class="fa fa-btc" aria-hidden="true"></i>
     </a>

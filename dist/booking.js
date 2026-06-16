@@ -78,3 +78,39 @@ window.addEventListener("load", (event) => {
     //on_load.classList.add("show","active")
     //set button to 1 hour
 });
+
+//POP OVER
+document.addEventListener('DOMContentLoaded', () => {
+    const popoverTriggerList =
+        document.querySelectorAll('[data-bs-toggle="popover"]');
+
+    [...popoverTriggerList].forEach(el => {
+        new bootstrap.Popover(el);
+    });
+
+    document.addEventListener('click', (e) => {
+
+        popoverTriggerList.forEach(trigger => {
+
+            const popover = bootstrap.Popover.getInstance(trigger);
+
+            if (!popover) return;
+
+            const popoverElement = document.querySelector('.btc-button');
+
+            const clickedTrigger = trigger.contains(e.target);
+            const clickedPopover =
+                popoverElement && popoverElement.contains(e.target);
+
+            if (!clickedTrigger && !clickedPopover) {
+                popover.hide();
+            }
+
+        });
+
+    });
+});
+
+document.getElementById('bitcoin-link').addEventListener('click', e => {
+    e.preventDefault();
+});
