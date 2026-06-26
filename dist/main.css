@@ -470,6 +470,21 @@ iframe{
 }
 
 /*WhatsApp Stuff*/
+.telegram-button {
+    position: fixed;
+    bottom: 110px;
+    right: 15px;
+    font-size: 2.5rem;
+    color: #ff7d00;
+    z-index: 9999;
+}
+
+.telegram-button:hover {
+    transform: scale(1.25);
+    color: red;
+}
+
+/*WhatsApp Stuff*/
 .whatsapp-button {
     position: fixed;
     bottom: 50px;
