@@ -306,6 +306,8 @@ a.hover:hover{
 }
 .nav-link.mission-footer{
     color: green;
+    padding-left: 0;
+    margin-left: 0;
 }
 /*END OF CONNECT*/
 /*Start of booking*/
