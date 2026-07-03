@@ -513,6 +513,10 @@ iframe{
 }
 
 @media (max-width: 576px) {
+    .telegram-button{
+        font-size: 2rem;
+        bottom: 90px;
+    }
     .pay-label {
         font-size: 0.5rem;
         bottom: 195px;
@@ -532,7 +536,7 @@ iframe{
         font-size:3.3rem;
         bottom: 125px;
     }
-    .pay-label, .mail-button, .whatsapp-button, .btc-button, .cashapp-button{
+    .pay-label, .mail-button, .whatsapp-button, .btc-button, .cashapp-button, .telegram-button{
         right: 5px;
     }
 }
