@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Slide-down menu</title>
+  <link href="main.css" rel="stylesheet"></head>
+  <style>
+    :root {
+      --bg: #f3f5f2;
+      --text: #1d2a2a;
+      --muted: #5b6b6b;
+      --panel: #1f3d3a;
+      --panel-text: #ff0000;
+      --panel-muted: #a9c2bc;
+      --accent: #f2b84b;
+      --line: rgba(255,255,255,.14);
+      --sub-bg: rgba(0,0,0,.18);
+      --menu-w: 100%;
+      --handle-h: 40px; /* space kept for the exposed handle */
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #121817; --text: #e6efec; --muted: #8fa39e;
+        --panel: #1a2f2d; --sub-bg: rgba(0,0,0,.25);
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #121817; --text: #e6efec; --muted: #8fa39e;
+      --panel: #1a2f2d; --sub-bg: rgba(0,0,0,.25);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    /* ---------- Menu shell ---------- */
+    .menu {
+      position: fixed;
+      top: 0; left: 50%;
+      width: min(var(--menu-w), 100%);
+      z-index: 10;
+      /* Slide the panel up by its own height; the handle stays visible */
+      transform: translate(-50%, -100%);
+      transition: transform .45s cubic-bezier(.22,.8,.25,1);
+    }
+    .menu.open { transform: translate(-50%, 0); }
+
+    .panel {
+      background: var(--panel);
+      color: var(--panel-text);
+      height: calc(var(--vh, 100vh) - var(--handle-h)); /* --vh is measured in JS */
+      overflow-y: auto;
+      padding: calc(env(safe-area-inset-top, 0px) + 12px) 0 8px;
+      border-radius: 0 0 4px 4px;
+    }
+    .panel ul { list-style: none; margin: 0; padding: 0; }
+
+    /* ---------- Items ---------- */
+    .row {
+      display: flex; align-items: center; width: 100%;
+      gap: 12px; padding: 14px 22px;
+      background: none; border: 0; color: inherit;
+      font: inherit; font-size: 1.05rem; text-align: left;
+      text-decoration: none; cursor: pointer;
+      border-bottom: 1px solid var(--line);
+    }
+    .row:hover { background: rgba(255,255,255,.06); }
+    .row:focus-visible, .handle:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: -2px;
+    }
+    .row .label { flex: 1; }
+
+    /* + / - icon: two bars, the vertical one rotates away when open */
+    .toggle { position: relative; width: 18px; height: 18px; flex: none; }
+    .toggle::before, .toggle::after {
+      content: ""; position: absolute; left: 50%; top: 50%;
+      width: 14px; height: 2px; margin: -1px 0 0 -7px;
+      background: var(--accent); border-radius: 1px;
+      transition: transform .25s ease;
+    }
+    .toggle::after { transform: rotate(90deg); }
+    .row[aria-expanded="true"] .toggle::after { transform: rotate(0deg); }
+
+    /* ---------- Submenus (tabbed in) ---------- */
+    .sub {
+      display: grid; grid-template-rows: 0fr;
+      transition: grid-template-rows .3s ease;
+      background: var(--sub-bg);
+    }
+    .sub.open { grid-template-rows: 1fr; }
+    .sub > ul { overflow: hidden; min-height: 0; }
+    .sub .row {
+      padding-left: 40px; font-size: .97rem; color: var(--panel-muted);
+    }
+    .sub .row:hover { color: var(--panel-text); }
+    .sub .sub .row { padding-left: 58px; }
+    /* keeps link labels aligned with labels of rows that have a +/- icon */
+    .spacer { width: 18px; flex: none; }
+
+    /* ---------- Handle (always exposed) ---------- */
+    .handle {
+      position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%);
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 22px 9px;
+      background: var(--panel);
+      color: var(--panel-text);
+      /*border: 0;*/
+      /*border-radius: 0 0 14px 14px;*/
+      font: inherit; font-size: .9rem; cursor: pointer;
+      padding-top: calc(8px + env(safe-area-inset-top, 0px) * 0);
+      font-family: 'pocket_calculatorregular', 'Source Sans Pro', sans-serif;
+      clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    }
+    .chev {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+    .handle .chev {
+      color: red;
+      font-family: 'pocket_calculatorregular', 'Source Sans Pro', sans-serif;
+      width: 9px; height: 9px;
+      /*border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent);*/
+      transform: rotate(0) translate(-2px, -10px);
+      transition: transform .45s ease;
+
+    }
+    .menu.open .handle .chev { transform: rotate(180deg) translate(-2px, -6px); }
+    .handle .txt::after { content: "MENU"; }
+    .menu.open .handle .txt::after { content: "Close"; }
+
+    /* ---------- Demo page ---------- */
+    main { max-width: 640px; margin: 0 auto; padding: 96px 24px 48px; line-height: 1.6; }
+    main h1 { font-size: 1.9rem; margin: 0 0 8px; }
+    main p { color: var(--muted); }
+    #picked { color: var(--text); font-weight: 600; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .menu, .sub, .toggle::before, .toggle::after, .handle .chev { transition: none; }
+    }
+  /*  menu handle*/
+  </style>
+</head>
+<body>
+
+<nav class="menu" id="menu" aria-label="Main">
+  <div class="panel" id="panel">
+    <ul id="menu-root"></ul>
+  </div>
+
+  <button class="handle" id="handle" aria-expanded="false" aria-controls="panel">
+    <span class="chev" aria-hidden="true">x</span>
+    <span class="txt"></span>
+  </button>
+</nav>
+
+<main>
+  <h1>Slide-down menu</h1>
+  <p>Use the tab at the top of the screen to open the menu. Items with a + have submenus.</p>
+  <p>Last selected: <span id="picked">none</span></p>
+</main>
+
+<script>
+  (function () {
+    var menu = document.getElementById('menu');
+    var handle = document.getElementById('handle');
+    var panel = document.getElementById('panel');
+    var picked = document.getElementById('picked');
+
+    // Measure the viewport first, then size the panel from it
+    function sizePanel() {
+      var vh = (window.visualViewport ? window.visualViewport.height : window.innerHeight);
+      document.documentElement.style.setProperty('--vh', vh + 'px');
+      document.documentElement.style.setProperty('--handle-h', handle.offsetHeight + 'px');
+    }
+    sizePanel();
+    window.addEventListener('resize', sizePanel);
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', sizePanel);
+
+    // ---------- Menu data ----------
+    // Each item: { label, href }  or  { label, children: [...], open?: true }
+    // Children can nest to any depth.
+    var MENU = [
+      { label: 'Home', href: '#home' },
+      { label: 'Products', children: [
+          { label: 'Web apps', href: '#web' },
+          { label: 'Mobile', children: [
+              { label: 'iOS', href: '#ios' },
+              { label: 'Android', href: '#android' }
+            ]},
+          { label: 'API', href: '#api' }
+        ]},
+      { label: 'Pricing', href: '#pricing' },
+      { label: 'Support', children: [
+          { label: 'Documentation', href: '#docs' },
+          { label: 'Contact us', href: '#contact' }
+        ]},
+      { label: 'About', href: '#about' }
+    ];
+
+    function buildMenu(items, ul, path) {
+      items.forEach(function (item, i) {
+        var id = path + '-' + i;
+        var li = document.createElement('li');
+        var label = document.createElement('span');
+        label.className = 'label';
+        label.textContent = item.label;
+
+        if (item.children && item.children.length) {
+          var btn = document.createElement('button');
+          btn.className = 'row';
+          btn.setAttribute('aria-expanded', String(!!item.open));
+          btn.setAttribute('aria-controls', id);
+          var tog = document.createElement('span');
+          tog.className = 'toggle';
+          tog.setAttribute('aria-hidden', 'true');
+          btn.append(tog, label);
+
+          var sub = document.createElement('div');
+          sub.className = 'sub' + (item.open ? ' open' : '');
+          sub.id = id;
+          if (!item.open) sub.setAttribute('inert', '');
+          var subUl = document.createElement('ul');
+          sub.appendChild(subUl);
+
+          li.append(btn, sub);
+          buildMenu(item.children, subUl, id);
+        } else {
+          var a = document.createElement('a');
+          a.className = 'row';
+          a.href = item.href || '#';
+          var sp = document.createElement('span');
+          sp.className = 'spacer';
+          sp.setAttribute('aria-hidden', 'true');
+          a.append(sp, label);
+          li.appendChild(a);
+        }
+        ul.appendChild(li);
+      });
+    }
+    buildMenu(MENU, document.getElementById('menu-root'), 'sub');
+
+    function setMenu(open) {
+      menu.classList.toggle('open', open);
+      handle.setAttribute('aria-expanded', String(open));
+      // Keep hidden links out of the tab order while closed
+      if (open) panel.removeAttribute('inert'); else panel.setAttribute('inert', '');
+    }
+    setMenu(false);
+
+    handle.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+
+    // Submenu toggles (works at any nesting depth)
+    panel.addEventListener('click', function (e) {
+      var btn = e.target.closest('button.row');
+      if (btn) {
+        var sub = document.getElementById(btn.getAttribute('aria-controls'));
+        var expand = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', String(expand));
+        sub.classList.toggle('open', expand);
+        if (sub) sub.toggleAttribute('inert', !expand);
+        return;
+      }
+      var link = e.target.closest('a.row');
+      if (link) {
+        e.preventDefault();
+        picked.textContent = link.textContent.trim();
+        setMenu(false);
+      }
+    });
+
+    // Escape closes; click outside closes
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); handle.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (menu.classList.contains('open') && !menu.contains(e.target)) setMenu(false);
+    });
+  })();
+</script>
+</body>
+</html>
