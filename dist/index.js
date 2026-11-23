@@ -4,14 +4,17 @@
     var panel = document.getElementById('sdm-panel');
     var picked = document.getElementById('picked'); // demo only; optional
 
-    // Measure the handle and expose it to the menu's own CSS (set on the menu, not :root)
+    // Size the panel from the visible viewport (CSS height is only the fallback)
     function sizePanel() {
-        menu.style.setProperty('--sdm-handle-h', handle.offsetHeight + 'px');
+        var vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        var handleH = handle.offsetHeight;
+        menu.style.setProperty('--sdm-handle-h', handleH + 'px');
+        panel.style.height = Math.max(0, vh - handleH) + 'px';
     }
     sizePanel();
     window.addEventListener('resize', sizePanel);
+    window.addEventListener('orientationchange', sizePanel);
     if (window.visualViewport) window.visualViewport.addEventListener('resize', sizePanel);
-
     // ---------- Menu data ----------
     // Each item: { label, href }  or  { label, children: [...], open?: true }
     // Children can nest to any depth.
