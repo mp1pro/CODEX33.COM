@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Slide-down menu</title>
+  <link href="main.css" rel="stylesheet">
+  <style>
+    /* =====================================================================
+       Slide-down menu  (everything is namespaced with "sdm" so it cannot
+       collide with your site CSS: classes .sdm-*, ids #sdm-*, vars --sdm-*)
+       ===================================================================== */
+
+    /* ---------- Menu shell + theme variables (scoped to .sdm) ---------- */
+    .sdm {
+      --sdm-panel: #1f3d3a;
+      --sdm-panel-text: #ff0000;
+      --sdm-panel-muted: #a9c2bc;
+      --sdm-accent: #ff7d00; /*#f2b84b;*/
+      --sdm-line: rgba(255,255,255,.14);
+      --sdm-sub-bg: rgba(0,0,0,.18);
+      --sdm-menu-w: 100%;
+      --sdm-handle-h: 40px; /* space kept for the exposed handle (re-measured in JS) */
+
+      position: fixed;
+      top: 0; left: 50%;
+      width: min(var(--sdm-menu-w), 100%);
+      z-index: 10;
+      margin: 0; padding: 0;
+      /* Slide the panel up by its own height; the handle stays visible */
+      transform: translate(-50%, -100%);
+      transition: transform .45s cubic-bezier(.22,.8,.25,1);
+    }
+    .sdm.sdm-open { transform: translate(-50%, 0); }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .sdm {
+        --sdm-panel: #1a2f2d; --sdm-sub-bg: rgba(0,0,0,.25);
+      }
+    }
+    :root[data-theme="dark"] .sdm {
+      --sdm-panel: #1a2f2d; --sdm-sub-bg: rgba(0,0,0,.25);
+    }
+
+    /* Local box-sizing + resets so global element rules don't leak in */
+    .sdm, .sdm *, .sdm *::before, .sdm *::after { box-sizing: border-box; }
+    .sdm ul, .sdm li { list-style: none; margin: 0; padding: 0; }
+    .sdm a { text-decoration: none; }
+
+    .sdm-panel {
+      background: var(--sdm-panel);
+      color: var(--sdm-panel-text);
+      height: calc(100vh - var(--sdm-handle-h));
+      overflow-y: auto;
+      overscroll-behavior-y: contain; /* stops pull-to-refresh fighting a swipe (replaces the old global body rule) */
+      padding: calc(env(safe-area-inset-top, 0px) + 12px) 0 8px;
+      border-radius: 0 0 4px 4px;
+    }
+
+    /* ---------- Items ---------- */
+    .sdm-row {
+      display: flex; align-items: center; width: 100%;
+      gap: 12px; margin: 0; padding: 14px 22px;
+      background: none; border: 0; border-radius: 0; box-shadow: none;
+      color: inherit;
+      font: inherit; font-size: 1.05rem; line-height: 1.3; text-align: left;
+      text-decoration: none; cursor: pointer;
+      border-bottom: 1px solid var(--sdm-line);
+    }
+    .sdm-row:hover { background: rgba(255,255,255,.06); }
+    .sdm-row:focus-visible, .sdm-handle:focus-visible {
+      outline: 2px solid var(--sdm-accent); outline-offset: -2px;
+    }
+    .sdm-label { flex: 1; }
+
+    /* + / - icon: two bars, the vertical one rotates away when open */
+    .sdm-toggle { position: relative; width: 18px; height: 18px; flex: none; }
+    .sdm-toggle::before, .sdm-toggle::after {
+      content: ""; position: absolute; left: 50%; top: 50%;
+      width: 14px; height: 2px; margin: -1px 0 0 -7px;
+      background: var(--sdm-accent); border-radius: 1px;
+      transition: transform .25s ease;
+    }
+    .sdm-toggle::after { transform: rotate(90deg); }
+    .sdm-row[aria-expanded="true"] .sdm-toggle::after { transform: rotate(0deg); }
+
+    /* ---------- Submenus (tabbed in) ---------- */
+    .sdm-sub {
+      display: grid; grid-template-rows: 0fr;
+      transition: grid-template-rows .3s ease;
+      background: var(--sdm-sub-bg);
+    }
+    .sdm-sub.sdm-open { grid-template-rows: 1fr; }
+    .sdm-sub > ul { overflow: hidden; min-height: 0; }
+    .sdm-sub .sdm-row {
+      padding-left: 40px; font-size: .97rem; color: var(--sdm-panel-muted);
+    }
+    .sdm-sub .sdm-row:hover { color: var(--sdm-panel-text); }
+    .sdm-sub .sdm-sub .sdm-row { padding-left: 58px; }
+    /* keeps link labels aligned with labels of rows that have a +/- icon */
+    .sdm-spacer { width: 18px; flex: none; }
+
+    /* ---------- Handle (always exposed) ---------- */
+    .sdm-handle {
+      position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%);
+      display: flex; align-items: center; gap: 10px;
+      margin: 0; padding: 8px 22px 9px;
+      background: var(--sdm-panel);
+      color: var(--sdm-panel-text);
+      border: 0;
+      /*border-radius: 0 0 14px 14px;*/
+      font: inherit; font-size: .9rem; cursor: pointer;
+      padding-top: calc(8px + env(safe-area-inset-top, 0px) * 0);
+      font-family: 'pocket_calculatorregular', 'Source Sans Pro', sans-serif;
+      clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+      touch-action: none; /* let our swipe code handle drags on the tab */
+    }
+    .sdm-chev {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: red;
+      font-family: 'pocket_calculatorregular', 'Source Sans Pro', sans-serif;
+      width: 9px; height: 9px;
+      /*border-right: 2px solid var(--sdm-accent); border-bottom: 2px solid var(--sdm-accent);*/
+      transform: rotate(0) translate(-2px, -10px);
+      transition: transform .45s ease;
+    }
+    .sdm.sdm-open .sdm-chev { transform: rotate(180deg) translate(-2px, -10px); }
+    .sdm-txt::after { content: "MENU"; }
+    .sdm.sdm-open .sdm-txt::after { content: "CLOSE"; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sdm, .sdm-sub, .sdm-toggle::before, .sdm-toggle::after, .sdm-chev { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="sdm" id="sdm" aria-label="Main">
+  <div class="sdm-panel" id="sdm-panel">
+    <ul id="sdm-root"></ul>
+  </div>
+
+  <button class="sdm-handle" id="sdm-handle" aria-expanded="false" aria-controls="sdm-panel">
+    <span class="sdm-chev" aria-hidden="true">x</span>
+    <span class="sdm-txt"></span>
+  </button>
+</nav>
+
+<main>
+  <h1>Slide-down menu</h1>
+  <p>Use the tab at the top of the screen to open the menu. Items with a + have submenus.</p>
+  <p>Last selected: <span id="picked">none</span></p>
+</main>
+
+<script>
+  (function () {
+    var menu = document.getElementById('sdm');
+    var handle = document.getElementById('sdm-handle');
+    var panel = document.getElementById('sdm-panel');
+    var picked = document.getElementById('picked'); // demo only; optional
+
+    // Measure the handle and expose it to the menu's own CSS (set on the menu, not :root)
+    function sizePanel() {
+      menu.style.setProperty('--sdm-handle-h', handle.offsetHeight + 'px');
+    }
+    sizePanel();
+    window.addEventListener('resize', sizePanel);
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', sizePanel);
+
+    // ---------- Menu data ----------
+    // Each item: { label, href }  or  { label, children: [...], open?: true }
+    // Children can nest to any depth.
+    var MENU = [
+      { label: 'Home', href: '#home' },
+      { label: 'Products', children: [
+          { label: 'Web apps', href: '#web' },
+          { label: 'Mobile', children: [
+              { label: 'iOS', href: '#ios' },
+              { label: 'Android', href: '#android' }
+            ]},
+          { label: 'API', href: '#api' }
+        ]},
+      { label: 'Pricing', href: '#pricing' },
+      { label: 'Support', children: [
+          { label: 'Documentation', href: '#docs' },
+          { label: 'Contact us', href: '#contact' }
+        ]},
+      { label: 'About', href: '#about' }
+    ];
+
+    function buildMenu(items, ul, path) {
+      items.forEach(function (item, i) {
+        var id = path + '-' + i;
+        var li = document.createElement('li');
+        var label = document.createElement('span');
+        label.className = 'sdm-label';
+        label.textContent = item.label;
+
+        if (item.children && item.children.length) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'sdm-row';
+          btn.setAttribute('aria-expanded', String(!!item.open));
+          btn.setAttribute('aria-controls', id);
+          var tog = document.createElement('span');
+          tog.className = 'sdm-toggle';
+          tog.setAttribute('aria-hidden', 'true');
+          btn.append(tog, label);
+
+          var sub = document.createElement('div');
+          sub.className = 'sdm-sub' + (item.open ? ' sdm-open' : '');
+          sub.id = id;
+          if (!item.open) sub.setAttribute('inert', '');
+          var subUl = document.createElement('ul');
+          sub.appendChild(subUl);
+
+          li.append(btn, sub);
+          buildMenu(item.children, subUl, id);
+        } else {
+          var a = document.createElement('a');
+          a.className = 'sdm-row';
+          a.href = item.href || '#';
+          var sp = document.createElement('span');
+          sp.className = 'sdm-spacer';
+          sp.setAttribute('aria-hidden', 'true');
+          a.append(sp, label);
+          li.appendChild(a);
+        }
+        ul.appendChild(li);
+      });
+    }
+    buildMenu(MENU, document.getElementById('sdm-root'), 'sdm-sub');
+
+    function setMenu(open) {
+      menu.classList.toggle('sdm-open', open);
+      handle.setAttribute('aria-expanded', String(open));
+      // Keep hidden links out of the tab order while closed
+      if (open) panel.removeAttribute('inert'); else panel.setAttribute('inert', '');
+      sizePanel();
+    }
+    setMenu(false);
+
+    handle.addEventListener('click', function () { setMenu(!menu.classList.contains('sdm-open')); });
+
+    // Submenu toggles (works at any nesting depth)
+    panel.addEventListener('click', function (e) {
+      var btn = e.target.closest('button.sdm-row');
+      if (btn) {
+        var sub = document.getElementById(btn.getAttribute('aria-controls'));
+        var expand = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', String(expand));
+        if (sub) {
+          sub.classList.toggle('sdm-open', expand);
+          sub.toggleAttribute('inert', !expand);
+        }
+        return;
+      }
+      var link = e.target.closest('a.sdm-row');
+      if (link) {
+        e.preventDefault();
+        if (picked) picked.textContent = link.textContent.trim();
+        setMenu(false);
+      }
+    });
+
+    // ---------- Swipe gestures ----------
+    // Swipe down (from the top edge, the handle, or the open panel) opens the menu;
+    // swipe up closes it.
+    var SWIPE_MIN = 50;   // minimum vertical travel in px
+    var EDGE = 40;        // px from the top of the screen that can start an open-swipe
+    var sx = 0, sy = 0, tracking = false, canClose = true;
+
+    document.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) { tracking = false; return; }
+      var t = e.touches[0];
+      sx = t.clientX; sy = t.clientY;
+      var isOpen = menu.classList.contains('sdm-open');
+      tracking = isOpen || menu.contains(e.target) || sy < EDGE;
+
+      // If the panel can still scroll down, an upward swipe inside it should scroll, not close
+      var scrollable = panel.scrollHeight > panel.clientHeight + 1;
+      var atBottom = panel.scrollTop + panel.clientHeight >= panel.scrollHeight - 1;
+      canClose = !(panel.contains(e.target) && scrollable && !atBottom);
+    }, { passive: true });
+
+    document.addEventListener('touchend', function (e) {
+      if (!tracking) return;
+      tracking = false;
+      var t = e.changedTouches[0];
+      var dy = t.clientY - sy, dx = t.clientX - sx;
+      // Must be mostly vertical and long enough
+      if (Math.abs(dy) < SWIPE_MIN || Math.abs(dy) < Math.abs(dx) * 1.5) return;
+
+      var isOpen = menu.classList.contains('sdm-open');
+      if (dy > 0 && !isOpen) setMenu(true);
+      else if (dy < 0 && isOpen && canClose) setMenu(false);
+    }, { passive: true });
+
+    // Escape closes; click outside closes
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('sdm-open')) { setMenu(false); handle.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (menu.classList.contains('sdm-open') && !menu.contains(e.target)) setMenu(false);
+    });
+  })();
+</script>
+</body>
+</html>

@@ -11,6 +11,17 @@
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
+<nav class="sdm" id="sdm" aria-label="Main">
+    <div class="sdm-panel" id="sdm-panel">
+        <ul id="sdm-root">
+        </ul>
+    </div>
+
+    <button class="sdm-handle" id="sdm-handle" aria-expanded="false" aria-controls="sdm-panel">
+        <span class="sdm-chev" aria-hidden="true"></span>
+        <span class="sdm-txt"></span>
+    </button>
+</nav>
 <div id="hello-wrapper">
     <div id="particles-js"></div>
     <div class="content position-absolute w-100 top-0 pt-5">
@@ -59,6 +70,6 @@
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script type='text/javascript' src='particles.js'></script>
 <script type='text/javascript' src='globe.js'></script>
-
+<script src="index.js"></script>
 </body>
 </html>

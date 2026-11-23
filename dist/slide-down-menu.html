@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Slide-down menu</title>
-  <link href="main.css" rel="stylesheet"></head>
+  <link href="main.css" rel="stylesheet">
   <style>
     :root {
       --bg: #f3f5f2;
@@ -13,7 +13,7 @@
       --panel: #1f3d3a;
       --panel-text: #ff0000;
       --panel-muted: #a9c2bc;
-      --accent: #f2b84b;
+      --accent: #ff7d00; /*#f2b84b;*/
       --line: rgba(255,255,255,.14);
       --sub-bg: rgba(0,0,0,.18);
       --menu-w: 100%;
@@ -29,6 +29,7 @@
       --bg: #121817; --text: #e6efec; --muted: #8fa39e;
       --panel: #1a2f2d; --sub-bg: rgba(0,0,0,.25);
     }
+    /*
     * { box-sizing: border-box; }
     html, body { height: 100%; margin: 0; }
     body {
@@ -36,7 +37,7 @@
       color: var(--text);
       font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
       padding-top: env(safe-area-inset-top, 0px);
-    }
+    }*/
 
     /* ---------- Menu shell ---------- */
     .menu {
@@ -53,7 +54,7 @@
     .panel {
       background: var(--panel);
       color: var(--panel-text);
-      height: calc(var(--vh, 100vh) - var(--handle-h)); /* --vh is measured in JS */
+      height: calc(100vh - var(--handle-h)); /* --vh is measured in JS */
       overflow-y: auto;
       padding: calc(env(safe-area-inset-top, 0px) + 12px) 0 8px;
       border-radius: 0 0 4px 4px;
@@ -110,7 +111,7 @@
       padding: 8px 22px 9px;
       background: var(--panel);
       color: var(--panel-text);
-      /*border: 0;*/
+      border: 0;
       /*border-radius: 0 0 14px 14px;*/
       font: inherit; font-size: .9rem; cursor: pointer;
       padding-top: calc(8px + env(safe-area-inset-top, 0px) * 0);
@@ -130,20 +131,25 @@
       transition: transform .45s ease;
 
     }
-    .menu.open .handle .chev { transform: rotate(180deg) translate(-2px, -6px); }
+    .menu.open .handle .chev { transform: rotate(180deg) translate(-2px, -10px); }
     .handle .txt::after { content: "MENU"; }
-    .menu.open .handle .txt::after { content: "Close"; }
+    /* let our swipe code handle drags on the tab */
+    .handle { touch-action: none; }
+    /* stop pull-to-refresh fighting a swipe down */
+    body { overscroll-behavior-y: contain; }
+    .menu.open .handle .txt::after { content: "CLOSE"; }
 
     /* ---------- Demo page ---------- */
+    /*
     main { max-width: 640px; margin: 0 auto; padding: 96px 24px 48px; line-height: 1.6; }
     main h1 { font-size: 1.9rem; margin: 0 0 8px; }
     main p { color: var(--muted); }
-    #picked { color: var(--text); font-weight: 600; }
+    #picked { color: var(--text); font-weight: 600; }*/
 
     @media (prefers-reduced-motion: reduce) {
       .menu, .sub, .toggle::before, .toggle::after, .handle .chev { transition: none; }
     }
-  /*  menu handle*/
+  /*  menu handle end */
   </style>
 </head>
 <body>
@@ -273,6 +279,39 @@
         setMenu(false);
       }
     });
+
+    // ---------- Swipe gestures ----------
+    // Swipe down (from the top edge, the handle, or the open panel) opens the menu;
+    // swipe up closes it.
+    var SWIPE_MIN = 50;   // minimum vertical travel in px
+    var EDGE = 40;        // px from the top of the screen that can start an open-swipe
+    var sx = 0, sy = 0, tracking = false, canClose = true;
+
+    document.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) { tracking = false; return; }
+      var t = e.touches[0];
+      sx = t.clientX; sy = t.clientY;
+      var isOpen = menu.classList.contains('open');
+      tracking = isOpen || menu.contains(e.target) || sy < EDGE;
+
+      // If the panel can still scroll down, an upward swipe inside it should scroll, not close
+      var scrollable = panel.scrollHeight > panel.clientHeight + 1;
+      var atBottom = panel.scrollTop + panel.clientHeight >= panel.scrollHeight - 1;
+      canClose = !(panel.contains(e.target) && scrollable && !atBottom);
+    }, { passive: true });
+
+    document.addEventListener('touchend', function (e) {
+      if (!tracking) return;
+      tracking = false;
+      var t = e.changedTouches[0];
+      var dy = t.clientY - sy, dx = t.clientX - sx;
+      // Must be mostly vertical and long enough
+      if (Math.abs(dy) < SWIPE_MIN || Math.abs(dy) < Math.abs(dx) * 1.5) return;
+
+      var isOpen = menu.classList.contains('open');
+      if (dy > 0 && !isOpen) setMenu(true);
+      else if (dy < 0 && isOpen && canClose) setMenu(false);
+    }, { passive: true });
 
     // Escape closes; click outside closes
     document.addEventListener('keydown', function (e) {
