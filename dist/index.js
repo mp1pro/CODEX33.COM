@@ -137,9 +137,18 @@
         }
         var link = e.target.closest('a.sdm-row, a.sdm-link');
         if (link) {
-            e.preventDefault();
-            if (picked) picked.textContent = link.textContent.trim();
-            setMenu(false);
+            if (picked) picked.textContent = link.textContent.trim(); // demo only
+
+            // Only block the default action for empty/placeholder links ("#"), never real hrefs
+            var href = link.getAttribute('href');
+            if (!href || href === '#') e.preventDefault();
+
+            // Ctrl/Cmd/Shift/Alt-click or non-primary button opens elsewhere: leave the menu open
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+
+            // Close AFTER the browser has started the navigation, so making the panel
+            // inert mid-click can't interfere with following the link
+            setTimeout(function () { setMenu(false); }, 0);
         }
     });
 
