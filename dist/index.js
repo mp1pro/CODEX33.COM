@@ -19,9 +19,12 @@
     // Each item: { label, href }  or  { label, children: [...], open?: true }
     // Children can nest to any depth.
     var MENU = [
+        { label: 'Home', href: 'index.html' },
         { label: 'Book A Class', href: 'booking.html' },
         { label: 'Mission', href: 'mission.html' },
-        { label: 'Products', href: '#products', children: [
+        { label: 'Faq', href: 'faq.html' },
+        { label: 'Contact Us', href: 'contactus.html' },
+        /*{ label: 'Products', href: '#products', children: [
                 { label: 'Web apps', href: '#web' },
                 { label: 'Mobile', children: [
                         { label: 'iOS', href: '#ios' },
@@ -44,7 +47,7 @@
                     href: '#contact'
                 }
             ]
-        },
+        },*/
     ];
 
     function buildMenu(items, ul, path) {
